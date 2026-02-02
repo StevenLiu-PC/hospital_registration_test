@@ -1,0 +1,1496 @@
+{
+  "summary": {
+    "meta": {
+      "env": "mock",
+      "base_url": "http://127.0.0.1:5000",
+      "timeout": 5
+    },
+    "api": {
+      "total_calls": 72,
+      "expected_pass": 15,
+      "expected_fail": 56,
+      "unexpected_fail": 1,
+      "infra_error": 0,
+      "slow_threshold_ms": 1000,
+      "slow_count": 0,
+      "slow_rate": 0.0,
+      "latency_ms": {
+        "avg": 5.486111111111111,
+        "p50": 1,
+        "p95": 19,
+        "max": 25
+      },
+      "breakdown": {
+        "register:200:expected_pass:": {
+          "count": 9
+        },
+        "query:200:expected_pass:": {
+          "count": 6
+        },
+        "register:400:expected_fail:身分證格式錯誤...": {
+          "count": 3
+        },
+        "query:404:expected_fail:查無資料...": {
+          "count": 24
+        },
+        "register:400:expected_fail:掛號日期錯誤...": {
+          "count": 3
+        },
+        "register:400:expected_fail:缺少必填欄位...": {
+          "count": 21
+        },
+        "register:400:unexpected_fail:[EXPECT=expected_pass] 已掛號...": {
+          "count": 1
+        },
+        "register:400:expected_fail:已掛號...": {
+          "count": 2
+        },
+        "cancel:404:expected_fail:掛號不存在...": {
+          "count": 3
+        }
+      },
+      "by_scenario": {
+        "normal": {
+          "total": 6,
+          "expected_pass": 6,
+          "expected_fail": 0,
+          "unexpected_fail": 0,
+          "infra_error": 0,
+          "as_expected": 6,
+          "not_expected": 0
+        },
+        "late": {
+          "total": 6,
+          "expected_pass": 6,
+          "expected_fail": 0,
+          "unexpected_fail": 0,
+          "infra_error": 0,
+          "as_expected": 6,
+          "not_expected": 0
+        },
+        "invalid_id": {
+          "total": 6,
+          "expected_pass": 0,
+          "expected_fail": 6,
+          "unexpected_fail": 0,
+          "infra_error": 0,
+          "as_expected": 6,
+          "not_expected": 0
+        },
+        "invalid_date": {
+          "total": 6,
+          "expected_pass": 0,
+          "expected_fail": 6,
+          "unexpected_fail": 0,
+          "infra_error": 0,
+          "as_expected": 6,
+          "not_expected": 0
+        },
+        "missing_required": {
+          "total": 39,
+          "expected_pass": 0,
+          "expected_fail": 39,
+          "unexpected_fail": 0,
+          "infra_error": 0,
+          "as_expected": 39,
+          "not_expected": 0
+        },
+        "duplicate_setup": {
+          "total": 4,
+          "expected_pass": 3,
+          "expected_fail": 0,
+          "unexpected_fail": 1,
+          "infra_error": 0,
+          "as_expected": 3,
+          "not_expected": 1
+        },
+        "duplicate": {
+          "total": 2,
+          "expected_pass": 0,
+          "expected_fail": 2,
+          "unexpected_fail": 0,
+          "infra_error": 0,
+          "as_expected": 2,
+          "not_expected": 0
+        },
+        "cancel_nonexist": {
+          "total": 3,
+          "expected_pass": 0,
+          "expected_fail": 3,
+          "unexpected_fail": 0,
+          "infra_error": 0,
+          "as_expected": 3,
+          "not_expected": 0
+        }
+      }
+    },
+    "dde": {
+      "value_percent": 100.0,
+      "injected": 32,
+      "detected": 32,
+      "leaked_ok": 0,
+      "other_non_expected": 0,
+      "infra_excluded": 0,
+      "by_scenario": {
+        "invalid_id": {
+          "injected": 3,
+          "detected": 3,
+          "leaked_ok": 0,
+          "other_non_expected": 0,
+          "infra_excluded": 0
+        },
+        "invalid_date": {
+          "injected": 3,
+          "detected": 3,
+          "leaked_ok": 0,
+          "other_non_expected": 0,
+          "infra_excluded": 0
+        },
+        "missing_required": {
+          "injected": 21,
+          "detected": 21,
+          "leaked_ok": 0,
+          "other_non_expected": 0,
+          "infra_excluded": 0
+        },
+        "duplicate": {
+          "injected": 2,
+          "detected": 2,
+          "leaked_ok": 0,
+          "other_non_expected": 0,
+          "infra_excluded": 0
+        },
+        "cancel_nonexist": {
+          "injected": 3,
+          "detected": 3,
+          "leaked_ok": 0,
+          "other_non_expected": 0,
+          "infra_excluded": 0
+        }
+      },
+      "hotspots": [
+        {
+          "scenario": "missing_required",
+          "injected": 21,
+          "detected": 21,
+          "leaked_ok": 0,
+          "other_non_expected": 0,
+          "infra_excluded": 0,
+          "dde_percent": 100.0,
+          "leak_rate": 0.0,
+          "other_rate": 0.0
+        },
+        {
+          "scenario": "invalid_id",
+          "injected": 3,
+          "detected": 3,
+          "leaked_ok": 0,
+          "other_non_expected": 0,
+          "infra_excluded": 0,
+          "dde_percent": 100.0,
+          "leak_rate": 0.0,
+          "other_rate": 0.0
+        },
+        {
+          "scenario": "invalid_date",
+          "injected": 3,
+          "detected": 3,
+          "leaked_ok": 0,
+          "other_non_expected": 0,
+          "infra_excluded": 0,
+          "dde_percent": 100.0,
+          "leak_rate": 0.0,
+          "other_rate": 0.0
+        },
+        {
+          "scenario": "cancel_nonexist",
+          "injected": 3,
+          "detected": 3,
+          "leaked_ok": 0,
+          "other_non_expected": 0,
+          "infra_excluded": 0,
+          "dde_percent": 100.0,
+          "leak_rate": 0.0,
+          "other_rate": 0.0
+        },
+        {
+          "scenario": "duplicate",
+          "injected": 2,
+          "detected": 2,
+          "leaked_ok": 0,
+          "other_non_expected": 0,
+          "infra_excluded": 0,
+          "dde_percent": 100.0,
+          "leak_rate": 0.0,
+          "other_rate": 0.0
+        }
+      ],
+      "definition": "DDE = Detected / Injected (Injected excludes INFRA_FAIL)"
+    },
+    "infra": {
+      "total_calls": 72,
+      "infra_fail": 0,
+      "infra_rate": 0.0,
+      "by_action": {},
+      "by_scenario": {},
+      "by_error_type": {},
+      "by_status_code": {},
+      "definition": "INFRA_FAIL = (timeout/exception) OR (5xx)"
+    },
+    "hotspots": {
+      "top_n": 10,
+      "rows": [
+        {
+          "scenario": "duplicate_setup",
+          "non_infra_calls": 4,
+          "rule_fail": 1,
+          "rule_fail_rate": 0.25,
+          "expected_pass": 3,
+          "expected_fail": 0
+        },
+        {
+          "scenario": "missing_required",
+          "non_infra_calls": 39,
+          "rule_fail": 0,
+          "rule_fail_rate": 0.0,
+          "expected_pass": 0,
+          "expected_fail": 39
+        },
+        {
+          "scenario": "normal",
+          "non_infra_calls": 6,
+          "rule_fail": 0,
+          "rule_fail_rate": 0.0,
+          "expected_pass": 6,
+          "expected_fail": 0
+        },
+        {
+          "scenario": "late",
+          "non_infra_calls": 6,
+          "rule_fail": 0,
+          "rule_fail_rate": 0.0,
+          "expected_pass": 6,
+          "expected_fail": 0
+        },
+        {
+          "scenario": "invalid_id",
+          "non_infra_calls": 6,
+          "rule_fail": 0,
+          "rule_fail_rate": 0.0,
+          "expected_pass": 0,
+          "expected_fail": 6
+        },
+        {
+          "scenario": "invalid_date",
+          "non_infra_calls": 6,
+          "rule_fail": 0,
+          "rule_fail_rate": 0.0,
+          "expected_pass": 0,
+          "expected_fail": 6
+        },
+        {
+          "scenario": "cancel_nonexist",
+          "non_infra_calls": 3,
+          "rule_fail": 0,
+          "rule_fail_rate": 0.0,
+          "expected_pass": 0,
+          "expected_fail": 3
+        },
+        {
+          "scenario": "duplicate",
+          "non_infra_calls": 2,
+          "rule_fail": 0,
+          "rule_fail_rate": 0.0,
+          "expected_pass": 0,
+          "expected_fail": 2
+        }
+      ],
+      "definition": "rule_fail_rate = unexpected_fail / non_infra_calls (exclude INFRA_FAIL)"
+    },
+    "tests": {
+      "total": 39,
+      "pass": 39,
+      "fail": 0
+    }
+  },
+  "api_records": [
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "normal",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 200,
+      "latency_ms": 3,
+      "category": "expected_pass",
+      "error_type": null,
+      "note": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "normal",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 200,
+      "latency_ms": 19,
+      "category": "expected_pass",
+      "error_type": null,
+      "note": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "normal",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 200,
+      "latency_ms": 15,
+      "category": "expected_pass",
+      "error_type": null,
+      "note": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "normal",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 200,
+      "latency_ms": 1,
+      "category": "expected_pass",
+      "error_type": null,
+      "note": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "normal",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 200,
+      "latency_ms": 14,
+      "category": "expected_pass",
+      "error_type": null,
+      "note": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "normal",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 200,
+      "latency_ms": 1,
+      "category": "expected_pass",
+      "error_type": null,
+      "note": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "late",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 200,
+      "latency_ms": 1,
+      "category": "expected_pass",
+      "error_type": null,
+      "note": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "late",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 200,
+      "latency_ms": 1,
+      "category": "expected_pass",
+      "error_type": null,
+      "note": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "late",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 200,
+      "latency_ms": 22,
+      "category": "expected_pass",
+      "error_type": null,
+      "note": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "late",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 200,
+      "latency_ms": 14,
+      "category": "expected_pass",
+      "error_type": null,
+      "note": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "late",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 200,
+      "latency_ms": 12,
+      "category": "expected_pass",
+      "error_type": null,
+      "note": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "late",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 200,
+      "latency_ms": 1,
+      "category": "expected_pass",
+      "error_type": null,
+      "note": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "invalid_id",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "身分證格式錯誤"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "invalid_id",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 404,
+      "latency_ms": 2,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "查無資料"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "invalid_id",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "身分證格式錯誤"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "invalid_id",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 404,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "查無資料"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "invalid_id",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "身分證格式錯誤"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "invalid_id",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 404,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "查無資料"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "invalid_date",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "掛號日期錯誤"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "invalid_date",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 404,
+      "latency_ms": 25,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "查無資料"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "invalid_date",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 13,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "掛號日期錯誤"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "invalid_date",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 404,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "查無資料"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "invalid_date",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "掛號日期錯誤"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "invalid_date",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 404,
+      "latency_ms": 13,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "查無資料"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "缺少必填欄位"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 21,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "缺少必填欄位"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 404,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "查無資料"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "缺少必填欄位"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 404,
+      "latency_ms": 13,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "查無資料"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "缺少必填欄位"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 404,
+      "latency_ms": 13,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "查無資料"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "缺少必填欄位"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 404,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "查無資料"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "缺少必填欄位"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 404,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "查無資料"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "缺少必填欄位"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 404,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "查無資料"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "缺少必填欄位"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "缺少必填欄位"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 404,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "查無資料"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 2,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "缺少必填欄位"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 404,
+      "latency_ms": 2,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "查無資料"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 14,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "缺少必填欄位"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 404,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "查無資料"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "缺少必填欄位"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 404,
+      "latency_ms": 16,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "查無資料"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "缺少必填欄位"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 404,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "查無資料"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "缺少必填欄位"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 404,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "查無資料"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 21,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "缺少必填欄位"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 12,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "缺少必填欄位"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 404,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "查無資料"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 16,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "缺少必填欄位"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 404,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "查無資料"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "缺少必填欄位"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 404,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "查無資料"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "缺少必填欄位"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 404,
+      "latency_ms": 2,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "查無資料"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "缺少必填欄位"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 404,
+      "latency_ms": 18,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "查無資料"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 2,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "缺少必填欄位"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "query",
+      "scenario": "missing_required",
+      "url": "http://127.0.0.1:5000/query",
+      "method": "GET",
+      "status_code": 404,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "查無資料"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "duplicate_setup",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 200,
+      "latency_ms": 1,
+      "category": "expected_pass",
+      "error_type": null,
+      "note": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "duplicate_setup",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 1,
+      "category": "unexpected_fail",
+      "error_type": null,
+      "note": "[EXPECT=expected_pass] 已掛號"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "duplicate_setup",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 200,
+      "latency_ms": 1,
+      "category": "expected_pass",
+      "error_type": null,
+      "note": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "duplicate",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 17,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "已掛號"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "duplicate_setup",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 200,
+      "latency_ms": 15,
+      "category": "expected_pass",
+      "error_type": null,
+      "note": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "register",
+      "scenario": "duplicate",
+      "url": "http://127.0.0.1:5000/register",
+      "method": "POST",
+      "status_code": 400,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "已掛號"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "cancel",
+      "scenario": "cancel_nonexist",
+      "url": "http://127.0.0.1:5000/cancel",
+      "method": "POST",
+      "status_code": 404,
+      "latency_ms": 14,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "掛號不存在"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "cancel",
+      "scenario": "cancel_nonexist",
+      "url": "http://127.0.0.1:5000/cancel",
+      "method": "POST",
+      "status_code": 404,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "掛號不存在"
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "action": "cancel",
+      "scenario": "cancel_nonexist",
+      "url": "http://127.0.0.1:5000/cancel",
+      "method": "POST",
+      "status_code": 404,
+      "latency_ms": 1,
+      "category": "expected_fail",
+      "error_type": null,
+      "note": "掛號不存在"
+    }
+  ],
+  "test_records": [
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[normal_seed0]",
+      "scenario": "normal",
+      "passed": true,
+      "duration_ms": 23.423500002536457,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[normal_seed1]",
+      "scenario": "normal",
+      "passed": true,
+      "duration_ms": 17.52959999794257,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[normal_seed2]",
+      "scenario": "normal",
+      "passed": true,
+      "duration_ms": 16.686200000549434,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[late_seed0]",
+      "scenario": "late",
+      "passed": true,
+      "duration_ms": 3.2777000014903024,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[late_seed1]",
+      "scenario": "late",
+      "passed": true,
+      "duration_ms": 37.11740000289865,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[late_seed2]",
+      "scenario": "late",
+      "passed": true,
+      "duration_ms": 14.3233999988297,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[invalid_id_seed0]",
+      "scenario": "invalid_id",
+      "passed": true,
+      "duration_ms": 4.431299999851035,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[invalid_id_seed1]",
+      "scenario": "invalid_id",
+      "passed": true,
+      "duration_ms": 2.8993000014452264,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[invalid_id_seed2]",
+      "scenario": "invalid_id",
+      "passed": true,
+      "duration_ms": 3.4735000008367933,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[invalid_date_seed0]",
+      "scenario": "invalid_date",
+      "passed": true,
+      "duration_ms": 26.900100001512328,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[invalid_date_seed1]",
+      "scenario": "invalid_date",
+      "passed": true,
+      "duration_ms": 14.960200001951307,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[invalid_date_seed2]",
+      "scenario": "invalid_date",
+      "passed": true,
+      "duration_ms": 15.79449999917415,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[missing_id_seed0]",
+      "scenario": "missing_required",
+      "passed": true,
+      "duration_ms": 2.129200001945719,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[missing_dob_seed0]",
+      "scenario": "missing_required",
+      "passed": true,
+      "duration_ms": 23.7321000022348,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[missing_name_seed0]",
+      "scenario": "missing_required",
+      "passed": true,
+      "duration_ms": 15.343400002166163,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[missing_department_seed0]",
+      "scenario": "missing_required",
+      "passed": true,
+      "duration_ms": 15.589400001772447,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[missing_doctor_seed0]",
+      "scenario": "missing_required",
+      "passed": true,
+      "duration_ms": 4.0466999998898245,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[missing_appointment_time_seed0]",
+      "scenario": "missing_required",
+      "passed": true,
+      "duration_ms": 2.699900000152411,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[missing_registration_date_seed0]",
+      "scenario": "missing_required",
+      "passed": true,
+      "duration_ms": 3.1390999974973965,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[missing_id_seed1]",
+      "scenario": "missing_required",
+      "passed": true,
+      "duration_ms": 1.7703000012261327,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[missing_dob_seed1]",
+      "scenario": "missing_required",
+      "passed": true,
+      "duration_ms": 2.7938999992329627,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[missing_name_seed1]",
+      "scenario": "missing_required",
+      "passed": true,
+      "duration_ms": 5.651799998304341,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[missing_department_seed1]",
+      "scenario": "missing_required",
+      "passed": true,
+      "duration_ms": 16.70890000241343,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[missing_doctor_seed1]",
+      "scenario": "missing_required",
+      "passed": true,
+      "duration_ms": 17.912900002556853,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[missing_appointment_time_seed1]",
+      "scenario": "missing_required",
+      "passed": true,
+      "duration_ms": 3.175600002577994,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[missing_registration_date_seed1]",
+      "scenario": "missing_required",
+      "passed": true,
+      "duration_ms": 2.745499998127343,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[missing_id_seed2]",
+      "scenario": "missing_required",
+      "passed": true,
+      "duration_ms": 21.28169999923557,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[missing_dob_seed2]",
+      "scenario": "missing_required",
+      "passed": true,
+      "duration_ms": 14.652600002591498,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[missing_name_seed2]",
+      "scenario": "missing_required",
+      "passed": true,
+      "duration_ms": 18.4095000004163,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[missing_department_seed2]",
+      "scenario": "missing_required",
+      "passed": true,
+      "duration_ms": 2.8345000027911738,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[missing_doctor_seed2]",
+      "scenario": "missing_required",
+      "passed": true,
+      "duration_ms": 3.9668999997957144,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[missing_appointment_time_seed2]",
+      "scenario": "missing_required",
+      "passed": true,
+      "duration_ms": 19.98989999992773,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[missing_registration_date_seed2]",
+      "scenario": "missing_required",
+      "passed": true,
+      "duration_ms": 4.044500001327833,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[duplicate_seed0]",
+      "scenario": "duplicate",
+      "passed": true,
+      "duration_ms": 2.6886000014201272,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[duplicate_seed1]",
+      "scenario": "duplicate",
+      "passed": true,
+      "duration_ms": 18.63969999976689,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[duplicate_seed2]",
+      "scenario": "duplicate",
+      "passed": true,
+      "duration_ms": 16.944299997703638,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[cancel_nonexist_seed0]",
+      "scenario": "cancel_nonexist",
+      "passed": true,
+      "duration_ms": 14.815500002441695,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[cancel_nonexist_seed1]",
+      "scenario": "cancel_nonexist",
+      "passed": true,
+      "duration_ms": 1.8107999967469368,
+      "error": null
+    },
+    {
+      "ts": "2026-01-27 00:04:19",
+      "nodeid": "tests/test_smoke_flow.py::test_smoke_gate_steps[cancel_nonexist_seed2]",
+      "scenario": "cancel_nonexist",
+      "passed": true,
+      "duration_ms": 2.1087000022816937,
+      "error": null
+    }
+  ]
+}

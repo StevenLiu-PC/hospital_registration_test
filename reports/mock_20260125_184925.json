@@ -1,0 +1,60 @@
+{
+  "summary": {
+    "meta": {
+      "env": "mock",
+      "base_url": "http://127.0.0.1:5000",
+      "timeout": 5
+    },
+    "api": {
+      "total_calls": 0,
+      "expected_pass": 0,
+      "expected_fail": 0,
+      "unexpected_fail": 0,
+      "infra_error": 0,
+      "slow_threshold_ms": 1000,
+      "slow_count": 0,
+      "slow_rate": 0.0,
+      "latency_ms": {
+        "avg": null,
+        "p50": null,
+        "p95": null,
+        "max": null
+      },
+      "breakdown": {},
+      "by_scenario": {}
+    },
+    "dde": {
+      "value_percent": null,
+      "injected": 0,
+      "detected": 0,
+      "leaked_ok": 0,
+      "other_non_expected": 0,
+      "infra_excluded": 0,
+      "by_scenario": {},
+      "hotspots": [],
+      "definition": "DDE = Detected / Injected (Injected excludes INFRA_FAIL)"
+    },
+    "infra": {
+      "total_calls": 0,
+      "infra_fail": 0,
+      "infra_rate": 0.0,
+      "by_action": {},
+      "by_scenario": {},
+      "by_error_type": {},
+      "by_status_code": {},
+      "definition": "INFRA_FAIL = (timeout/exception) OR (5xx)"
+    },
+    "hotspots": {
+      "top_n": 10,
+      "rows": [],
+      "definition": "rule_fail_rate = unexpected_fail / non_infra_calls (exclude INFRA_FAIL)"
+    },
+    "tests": {
+      "total": 0,
+      "pass": 0,
+      "fail": 0
+    }
+  },
+  "api_records": [],
+  "test_records": []
+}

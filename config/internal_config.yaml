@@ -1,0 +1,9 @@
+# config/test_config.yaml
+env: mock
+mock_base_url: "http://127.0.0.1:5000"
+timeout: 5
+reset_path: /admin/reset
+seed_path: /admin/seed   #  stress/chaos 要塞髒資料用
+
+mock_data:
+  patient_id_prefix: "MOCK"   #  測資 id 前綴（給 data_utils / seed_dirty_db 用）
