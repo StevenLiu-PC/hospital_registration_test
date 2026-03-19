@@ -1,4 +1,3 @@
-# conftest.py
 # 這支 conftest 是「環境設置 + 報表記錄員」                                     #  角色定位：測試環境/記錄，不做規則判斷
 # 統一提供 tests 會用到的三個 API fixture：register_api / cancel_api / query_api  #  tests 端只打 fixture，不直接碰 requests
 # 統一做：每個 test 前 reset（測試隔離）、記錄每次 API call、記錄每個 pytest case 結果、session 結束輸出報表
@@ -17,14 +16,37 @@ import pytest                        #  pytest fixture/hook/mark
 import requests                      #  requests.Session 統一發送 HTTP
 
 # 報表記錄工具：把每次 API call、每個 test case 結果收集起來
-from reporting.report_utils import (  #  「記錄」發生在這裡，規則判斷在 report_rules / data_utils
-    record_api_call,                 #  記 API call（action/status/latency/scenario）
-    set_run_meta,                    #  記本次 run 的 meta（env/base_url/timeout）
-    record_test_case,                #  記 pytest case 層級結果（passed/failed/duration）
-)
+# 目的：
+# - 本機私有版：有 reporting 模組 -> 正常記錄內控報表
+# - GitHub 公開版：沒有 reporting 模組 -> 不要讓 pytest / CI 直接炸掉
+try:
+    from reporting.report_utils import (  #  「記錄」發生在這裡，規則判斷在 report_rules / data_utils
+        record_api_call,                 #  記 API call（action/status/latency/scenario）
+        set_run_meta,                    #  記本次 run 的 meta（env/base_url/timeout）
+        record_test_case,                #  記 pytest case 層級結果（passed/failed/duration）
+    )
 
-# 報表輸出：pytest session 結束後輸出 md/csv/json
-from reporting.report_export import export_reports  #  sessionfinish 時統一輸出報表
+    # 報表輸出：pytest session 結束後輸出 md/csv/json
+    from reporting.report_export import export_reports  #  sessionfinish 時統一輸出報表
+
+    REPORTING_AVAILABLE = True  #  私有完整模式：真的產內控報表
+
+except ModuleNotFoundError:
+    REPORTING_AVAILABLE = False  #  公開展示模式：沒有 reporting 也要能跑測試
+    print("[WARN] reporting module not found, skip custom reporting.")
+
+    # no-op：讓下面 _record / session hooks 照常呼叫，不中斷 pytest
+    def record_api_call(*args, **kwargs):
+        pass
+
+    def set_run_meta(*args, **kwargs):
+        pass
+
+    def record_test_case(*args, **kwargs):
+        pass
+
+    def export_reports(*args, **kwargs):
+        return {}
 
 
 # ------------------------------
@@ -402,6 +424,11 @@ def pytest_sessionstart(session):
 
 # 整包 pytest 全跑完後：把你收集到的 API call / test case 統計輸出成報表檔。
 def pytest_sessionfinish(session, exitstatus):
+    if not REPORTING_AVAILABLE:  #  公開版沒有 reporting 時，跳過自訂報表輸出
+        print("\n[API Call Report]")  #  CLI 提示：目前是公開展示模式
+        print(" - custom reporting skipped (reporting module not available)")
+        return
+
     paths = export_reports(out_dir="reports", filename_prefix="mock", slow_threshold_ms=1000)  #  統一輸出
     print("\n[API Call Report]")          #  CLI 提示：報表在哪
     print(" - MD  :", paths.get("md"))    #  markdown
