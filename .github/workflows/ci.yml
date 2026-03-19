@@ -1,0 +1,50 @@
+name: Hospital Registration CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+
+    env:
+      MOCK_BASE_URL: http://127.0.0.1:5000
+      MOCK_TIMEOUT: 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Start mock server
+        run: |
+          nohup python -m api.mock_server > mock_server.log 2>&1 &
+          sleep 5
+
+      - name: Health check
+        run: |
+          curl http://127.0.0.1:5000/health || true
+
+      - name: Run smoke tests
+        run: |
+          pytest -m smoke -v --html=report.html --self-contained-html
+
+      - name: Upload pytest report
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-report
+          path: |
+            report.html
+            mock_server.log
