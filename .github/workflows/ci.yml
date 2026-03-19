@@ -39,7 +39,7 @@ jobs:
 
       - name: Run smoke tests
         run: |
-          pytest -m smoke -v --html=report.html --self-contained-html
+            pytest tests/test_smoke_flow.py -v --html=report.html --self-contained-html
 
       - name: Upload pytest report
         uses: actions/upload-artifact@v4
