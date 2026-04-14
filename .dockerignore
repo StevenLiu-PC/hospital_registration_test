@@ -1,0 +1,17 @@
+.git
+.github
+.venv
+.pytest_cache
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+
+report.html
+allure-results
+ci_artifacts
+
+reports/latest
+reports/history
+reports/allure-results
+reports/allure-report
